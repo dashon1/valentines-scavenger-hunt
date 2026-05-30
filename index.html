@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Scavenger Hunt Kit — Plan the Most Romantic Night of the Year</title>
+    <style>
+        :root {
+            --primary: #C0392B;
+            --primary-dark: #922B21;
+            --primary-light: #FADBD8;
+            --rose: #E74C3C;
+            --pink: #F5A7A7;
+            --gold: #D4AC0D;
+            --dark: #1A0A0A;
+            --text: #2C1810;
+            --muted: #7D5A5A;
+            --border: #F0D0D0;
+            --bg: #FFF8F8;
+            --white: #FFFFFF;
+            --shadow-sm: 0 2px 12px rgba(192,57,43,0.08);
+            --shadow-md: 0 8px 32px rgba(192,57,43,0.13);
+            --shadow-lg: 0 20px 60px rgba(192,57,43,0.18);
+            --radius: 12px;
+            --radius-lg: 20px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+        /* NAV */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+        .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+        .nav-logo { font-size: 1.15rem; font-weight: 800; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .nav-links { display: flex; gap: 24px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--muted); font-weight: 500; font-size: 0.88rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-cta { background: var(--primary); color: white; border: none; padding: 10px 22px; border-radius: 8px; font-weight: 700; font-size: 0.88rem; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+        .nav-cta:hover { background: var(--primary-dark); }
+
+        /* HERO */
+        .hero { background: linear-gradient(160deg, #3D0000 0%, #8B1A1A 45%, #C0392B 100%); padding: 130px 24px 90px; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 50% 30%, rgba(255,100,100,0.15) 0%, transparent 65%); pointer-events: none; }
+        .hearts-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; overflow: hidden; }
+        .floating-heart { position: absolute; font-size: 1.2rem; opacity: 0.12; animation: floatUp 8s infinite; }
+        .fh1 { left: 10%; animation-delay: 0s; font-size: 1rem; }
+        .fh2 { left: 25%; animation-delay: 1.5s; font-size: 1.5rem; }
+        .fh3 { left: 45%; animation-delay: 3s; font-size: 0.9rem; }
+        .fh4 { left: 65%; animation-delay: 0.8s; font-size: 1.2rem; }
+        .fh5 { left: 80%; animation-delay: 2.2s; font-size: 1rem; }
+        @keyframes floatUp { 0% { bottom: -5%; opacity: 0; } 10% { opacity: 0.12; } 90% { opacity: 0.12; } 100% { bottom: 110%; opacity: 0; } }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); color: #FFD5D5; padding: 6px 18px; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px; }
+        .hero h1 { font-size: clamp(2.1rem, 5vw, 3.6rem); font-weight: 800; color: white; line-height: 1.15; max-width: 780px; margin: 0 auto 18px; }
+        .hero h1 em { font-style: normal; color: #FFB3B3; }
+        .hero-sub { font-size: 1.15rem; color: rgba(255,255,255,0.72); max-width: 580px; margin: 0 auto 40px; }
+        .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 52px; }
+        .btn-white { background: white; color: var(--primary); padding: 16px 36px; border-radius: var(--radius); font-weight: 700; font-size: 1.05rem; border: none; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+        .btn-white:hover { background: var(--primary-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+        .btn-ghost { background: transparent; color: white; padding: 16px 36px; border-radius: var(--radius); font-weight: 700; font-size: 1.05rem; border: 2px solid rgba(255,255,255,0.35); cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+        .btn-ghost:hover { border-color: white; background: rgba(255,255,255,0.1); }
+        .hero-includes { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; }
+        .include-item { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.65); font-size: 0.88rem; }
+
+        /* SECTIONS */
+        section { padding: 80px 24px; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        .section-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--primary); margin-bottom: 10px; }
+        .section-title { font-size: clamp(1.6rem, 3vw, 2.5rem); font-weight: 800; color: var(--dark); line-height: 1.2; margin-bottom: 14px; }
+        .section-sub { font-size: 1.05rem; color: var(--muted); max-width: 580px; }
+        .section-header { margin-bottom: 52px; }
+        .section-header.center { text-align: center; }
+        .section-header.center .section-sub { margin: 0 auto; }
+
+        /* WHAT'S INCLUDED */
+        .included-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+        .included-card { background: white; border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 32px 28px; box-shadow: var(--shadow-sm); transition: transform 0.2s, box-shadow 0.2s; }
+        .included-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .included-icon { font-size: 2.2rem; margin-bottom: 16px; }
+        .included-card h3 { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+        .included-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+
+        /* HOW IT WORKS */
+        .how-section { background: var(--bg); }
+        .steps-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
+        .step { text-align: center; padding: 32px 20px; background: white; border-radius: var(--radius-lg); border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+        .step-icon { font-size: 2rem; margin-bottom: 14px; }
+        .step-num { font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--primary); margin-bottom: 6px; }
+        .step h3 { font-size: 0.98rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+        .step p { font-size: 0.87rem; color: var(--muted); }
+
+        /* HUNT PREVIEW */
+        .hunt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+        .hunt-card { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow-md); }
+        .hunt-header { padding: 32px 28px 24px; }
+        .hunt-header.indoor { background: linear-gradient(135deg, #3D0000, #8B1A1A); }
+        .hunt-header.outdoor { background: linear-gradient(135deg, #1A3A00, #2D7A1A); }
+        .hunt-tag { display: inline-block; background: rgba(255,255,255,0.2); color: white; font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 100px; margin-bottom: 12px; }
+        .hunt-header h3 { font-size: 1.3rem; font-weight: 800; color: white; margin-bottom: 6px; }
+        .hunt-header p { font-size: 0.9rem; color: rgba(255,255,255,0.75); }
+        .hunt-body { background: white; padding: 24px 28px; }
+        .hunt-clue-preview { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+        .hunt-clue-preview li { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: var(--text); }
+        .clue-num { width: 24px; height: 24px; background: var(--primary-light); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; flex-shrink: 0; }
+        .clue-num.green { background: #D4EDDA; color: #155724; }
+        .hunt-more { font-size: 0.82rem; color: var(--muted); font-style: italic; }
+
+        /* PRICING */
+        .pricing-section { background: var(--bg); }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; max-width: 780px; margin: 0 auto; }
+        .price-card { background: white; border-radius: var(--radius-lg); border: 2px solid var(--border); padding: 40px 32px; text-align: center; transition: transform 0.2s; box-shadow: var(--shadow-sm); }
+        .price-card.featured { border-color: var(--primary); box-shadow: var(--shadow-lg); transform: scale(1.04); }
+        .price-card:hover { transform: translateY(-4px); }
+        .price-card.featured:hover { transform: scale(1.04) translateY(-4px); }
+        .best-val { display: inline-block; background: var(--primary); color: white; font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 14px; border-radius: 100px; margin-bottom: 14px; }
+        .price-name { font-size: 1.2rem; font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+        .price-amount { font-size: 3.2rem; font-weight: 800; color: var(--primary); line-height: 1; }
+        .price-amount sup { font-size: 1.3rem; vertical-align: super; }
+        .price-type { font-size: 0.85rem; color: var(--muted); margin: 6px 0 20px; }
+        .price-features { list-style: none; text-align: left; margin-bottom: 28px; }
+        .price-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text); padding: 7px 0; border-bottom: 1px solid var(--border); }
+        .price-features li:last-child { border-bottom: none; }
+        .price-features li::before { content: '♥'; color: var(--primary); font-weight: 700; flex-shrink: 0; font-size: 0.8rem; margin-top: 2px; }
+        .price-btn { width: 100%; padding: 14px; border-radius: var(--radius); font-weight: 700; font-size: 0.97rem; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-red { background: var(--primary); color: white; }
+        .btn-red:hover { background: var(--primary-dark); }
+        .btn-outline-red { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
+        .btn-outline-red:hover { background: var(--primary); color: white; }
+
+        /* TESTIMONIALS */
+        .t-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
+        .t-card { background: white; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow-sm); }
+        .t-hearts { color: var(--primary); letter-spacing: 3px; margin-bottom: 14px; font-size: 0.9rem; }
+        .t-card p { font-size: 0.93rem; color: var(--text); line-height: 1.75; font-style: italic; margin-bottom: 18px; }
+        .t-author { font-size: 0.85rem; color: var(--muted); font-weight: 600; }
+
+        /* FAQ */
+        .faq-section { background: var(--bg); }
+        .faq-list { max-width: 740px; margin: 0 auto; }
+        .faq-item { background: white; border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 10px; overflow: hidden; }
+        .faq-q { width: 100%; text-align: left; background: none; border: none; padding: 20px 24px; font-size: 0.97rem; font-weight: 600; color: var(--dark); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; transition: background 0.15s; }
+        .faq-q:hover { background: var(--bg); }
+        .faq-chevron { width: 18px; height: 18px; flex-shrink: 0; transition: transform 0.3s; color: var(--primary); }
+        .faq-item.open .faq-chevron { transform: rotate(180deg); }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+        .faq-item.open .faq-a { max-height: 250px; }
+        .faq-a-inner { padding: 0 24px 20px; font-size: 0.93rem; color: var(--muted); line-height: 1.75; }
+
+        /* CTA BANNER */
+        .cta-section { background: linear-gradient(135deg, #3D0000 0%, #C0392B 100%); padding: 80px 24px; text-align: center; }
+        .cta-section h2 { font-size: clamp(1.7rem, 3.5vw, 2.6rem); font-weight: 800; color: white; margin-bottom: 16px; }
+        .cta-section p { font-size: 1.05rem; color: rgba(255,255,255,0.72); max-width: 520px; margin: 0 auto 36px; }
+
+        /* FOOTER */
+        footer { background: var(--dark); color: rgba(255,255,255,0.45); text-align: center; padding: 32px 24px; font-size: 0.85rem; }
+        footer strong { color: rgba(255,255,255,0.8); }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hunt-grid { grid-template-columns: 1fr; }
+            .price-card.featured { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">&#10084; Valentine's Hunt Kit</a>
+        <ul class="nav-links">
+            <li><a href="#included">What's Inside</a></li>
+            <li><a href="#hunts">The Hunts</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <a href="#pricing" class="nav-cta">Get the Kit — $9</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hearts-bg">
+        <span class="floating-heart fh1">&#10084;</span>
+        <span class="floating-heart fh2">&#10084;</span>
+        <span class="floating-heart fh3">&#10084;</span>
+        <span class="floating-heart fh4">&#10084;</span>
+        <span class="floating-heart fh5">&#10084;</span>
+    </div>
+    <div class="container" style="position:relative;">
+        <div class="hero-badge">&#10084; Valentine's Day Planning Kit</div>
+        <h1>Plan the Most <em>Romantic Valentine's Day</em> of the Year</h1>
+        <p class="hero-sub">Two complete scavenger hunts, a step-by-step planning guide, and 30 love note templates — everything you need for a Valentine's Day that feels genuinely unforgettable.</p>
+        <div class="hero-actions">
+            <a href="#pricing" class="btn-white">Get the Full Kit — $9</a>
+            <a href="#included" class="btn-ghost">See What's Inside</a>
+        </div>
+        <div class="hero-includes">
+            <div class="include-item">&#10004; 2 complete scavenger hunts</div>
+            <div class="include-item">&#10004; 30 love note templates</div>
+            <div class="include-item">&#10004; Full planning timeline</div>
+            <div class="include-item">&#10004; One-time download, yours forever</div>
+        </div>
+    </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section id="included">
+    <div class="container">
+        <div class="section-header center">
+            <div class="section-label">Everything You Need</div>
+            <h2 class="section-title">Stop Guessing. Start Planning.</h2>
+            <p class="section-sub">Every piece of this kit is designed so you can spend less time planning and more time actually being present for the person you love.</p>
+        </div>
+        <div class="included-grid">
+            <div class="included-card">
+                <div class="included-icon">&#127968;</div>
+                <h3>Romantic Dinner Hunt (Indoor)</h3>
+                <p>A 10-clue hunt through your home, ending at a candlelit dinner you've set up. Perfect for a cozy, private Valentine's night in. Each clue includes a romantic activity at that location.</p>
+            </div>
+            <div class="included-card">
+                <div class="included-icon">&#127758;</div>
+                <h3>Adventure Date Hunt (Outdoor)</h3>
+                <p>A 10-clue hunt through meaningful locations in your city — the coffee shop from your first date, the park you walk through, places that are part of your story. Fully customizable to your locations.</p>
+            </div>
+            <div class="included-card">
+                <div class="included-icon">&#128203;</div>
+                <h3>Planning Guide</h3>
+                <p>A 2-week countdown timeline from "I have an idea" to the night running flawlessly. Includes a shopping list, setup checklist, customization tips, and backup plans for every scenario.</p>
+            </div>
+            <div class="included-card">
+                <div class="included-icon">&#128140;</div>
+                <h3>30 Love Note Templates</h3>
+                <p>Fill-in-the-blank love notes in four styles: funny (because they should laugh first), heartfelt, memory-based, and future promises. Place them at clue stops or use them as standalone Valentine's cards.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how-it-works">
+    <div class="container">
+        <div class="section-header center">
+            <div class="section-label">Simple Process</div>
+            <h2 class="section-title">From Idea to Unforgettable Night in 5 Steps</h2>
+        </div>
+        <div class="steps-row">
+            <div class="step">
+                <div class="step-icon">&#128196;</div>
+                <div class="step-num">Step 1</div>
+                <h3>Download the Kit</h3>
+                <p>All files delivered instantly. No account needed, no app to install.</p>
+            </div>
+            <div class="step">
+                <div class="step-icon">&#128506;</div>
+                <div class="step-num">Step 2</div>
+                <h3>Choose Your Hunt</h3>
+                <p>Indoor romantic dinner or outdoor adventure — or plan one of each for a two-part experience.</p>
+            </div>
+            <div class="step">
+                <div class="step-icon">&#9998;</div>
+                <div class="step-num">Step 3</div>
+                <h3>Personalize It</h3>
+                <p>Replace the brackets with your real locations, real memories, and specific personal details.</p>
+            </div>
+            <div class="step">
+                <div class="step-icon">&#128140;</div>
+                <div class="step-num">Step 4</div>
+                <h3>Write Your Love Notes</h3>
+                <p>Pick 6–8 from the 30 templates. Fill them in. Print or handwrite them on cards.</p>
+            </div>
+            <div class="step">
+                <div class="step-icon">&#10084;</div>
+                <div class="step-num">Step 5</div>
+                <h3>Set Up and Enjoy</h3>
+                <p>Follow the planning guide's day-of checklist. Then sit back and watch them fall in love with you all over again.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HUNT PREVIEW -->
+<section id="hunts">
+    <div class="container">
+        <div class="section-header center">
+            <div class="section-label">The Hunts</div>
+            <h2 class="section-title">Two Complete Experiences. One Kit.</h2>
+            <p class="section-sub">Both hunts are fully written, tested, and ready to customize — not just a template with empty blanks.</p>
+        </div>
+        <div class="hunt-grid">
+            <div class="hunt-card">
+                <div class="hunt-header indoor">
+                    <div class="hunt-tag">Indoor Hunt</div>
+                    <h3>Romantic Dinner Hunt</h3>
+                    <p>10 clues through your home ending at a set candlelit table</p>
+                </div>
+                <div class="hunt-body">
+                    <ul class="hunt-clue-preview">
+                        <li><span class="clue-num">1</span> The place where mornings begin (bedroom)</li>
+                        <li><span class="clue-num">2</span> The morning ritual spot (coffee/kettle)</li>
+                        <li><span class="clue-num">3</span> The refrigerator — what you save for each other</li>
+                        <li><span class="clue-num">4</span> Where time slows down together (the couch)</li>
+                        <li><span class="clue-num">5</span> Where the day resets (bathroom)</li>
+                    </ul>
+                    <p class="hunt-more">+ 5 more clues leading to the dinner reveal</p>
+                </div>
+            </div>
+            <div class="hunt-card">
+                <div class="hunt-header outdoor">
+                    <div class="hunt-tag">Outdoor Hunt</div>
+                    <h3>Adventure Date Hunt</h3>
+                    <p>10 clues through locations meaningful to your relationship</p>
+                </div>
+                <div class="hunt-body">
+                    <ul class="hunt-clue-preview">
+                        <li><span class="clue-num green">1</span> A place you go together regularly</li>
+                        <li><span class="clue-num green">2</span> Where something important first happened</li>
+                        <li><span class="clue-num green">3</span> Something one of you introduced to the other</li>
+                        <li><span class="clue-num green">4</span> A future you've talked about</li>
+                        <li><span class="clue-num green">5</span> Somewhere just beautiful (no reason needed)</li>
+                    </ul>
+                    <p class="hunt-more">+ 5 more clues including a funny memory stop and the finale</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="background: var(--bg);">
+    <div class="container">
+        <div class="section-header center">
+            <div class="section-label">Real Reviews</div>
+            <h2 class="section-title">From People Who Actually Used It</h2>
+        </div>
+        <div class="t-grid">
+            <div class="t-card">
+                <div class="t-hearts">&#10084;&#10084;&#10084;&#10084;&#10084;</div>
+                <p>"I was completely stuck on what to do for Valentine's Day — restaurants felt too generic and I couldn't think of anything creative. This kit gave me an actual plan I could follow, not just inspiration. The outdoor hunt took about 90 minutes, she cried at clue 7, and we talked for two hours at dinner about all the places we'd visited. Best Valentine's Day we've had in 6 years."</p>
+                <div class="t-author">Marcus D. — purchased February 2025</div>
+            </div>
+            <div class="t-card">
+                <div class="t-hearts">&#10084;&#10084;&#10084;&#10084;&#10084;</div>
+                <p>"I used the indoor hunt. It sounds simple but the actual writing in these clues is so good — I would never have written anything that thoughtful on my own, and I'm an English teacher. I personalized them with specific memories from our relationship and my partner said it was the most romantic thing anyone had ever done for her. $9 was an absurd deal for what this delivered."</p>
+                <div class="t-author">Priya N. — purchased February 2025</div>
+            </div>
+            <div class="t-card">
+                <div class="t-hearts">&#10084;&#10084;&#10084;&#10084;&#10084;</div>
+                <p>"The love notes alone were worth the price. I used 8 of them — some during the hunt, some I tucked into his bag for work the next day, one I left in his car. The funny ones got him laughing and then the heartfelt ones hit harder because of it. I've already bought it again for our anniversary."</p>
+                <div class="t-author">Tamara B. — purchased February 2025</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+    <div class="container">
+        <div class="section-header center">
+            <div class="section-label">Simple Pricing</div>
+            <h2 class="section-title">One-Time Payment. No Subscription.</h2>
+            <p class="section-sub">Download instantly. Yours to keep and use forever.</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <div class="price-name">Digital Kit</div>
+                <div class="price-amount"><sup>$</sup>9</div>
+                <div class="price-type">One-time payment</div>
+                <ul class="price-features">
+                    <li>Romantic Dinner Hunt (10 clues, full writeup)</li>
+                    <li>Adventure Date Hunt (10 clues, full writeup)</li>
+                    <li>Planning Guide with 2-week timeline</li>
+                    <li>30 love note templates (4 styles)</li>
+                    <li>Shopping list + setup checklist</li>
+                    <li>Customization tips for every clue</li>
+                    <li>Backup plans for outdoor hunt</li>
+                </ul>
+                <button class="price-btn btn-outline-red">Get Digital Kit — $9</button>
+            </div>
+            <div class="price-card featured">
+                <div class="best-val">Most Complete</div>
+                <div class="price-name">Premium Bundle</div>
+                <div class="price-amount"><sup>$</sup>17</div>
+                <div class="price-type">One-time payment</div>
+                <ul class="price-features">
+                    <li>Everything in Digital Kit</li>
+                    <li>Printable clue card designs (print-ready PDF)</li>
+                    <li>Detailed customization guide (how to make each clue deeply personal)</li>
+                    <li>3 bonus themed hunts: Anniversary Edition, Birthday Hunt, Proposal-Ready Hunt</li>
+                    <li>Extended love notes collection (15 additional notes)</li>
+                    <li>Outdoor hunt location worksheet</li>
+                    <li>Dinner recipe pairings for the indoor finale</li>
+                </ul>
+                <button class="price-btn btn-red">Get Premium Bundle — $17</button>
+            </div>
+        </div>
+        <p style="text-align:center; margin-top:24px; font-size:0.85rem; color:var(--muted);">Instant download. No account required. All files in PDF and Markdown format.</p>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+    <div class="container">
+        <div class="section-header center">
+            <div class="section-label">Questions</div>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    How much time does the scavenger hunt actually take?
+                    <svg class="faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner">The indoor romantic dinner hunt takes 20–35 minutes for the hunt itself, plus however long dinner is. The outdoor adventure hunt takes 1.5–2.5 hours depending on how spread out your locations are and how long you linger at each stop. The planning timeline asks for 2 weeks of light prep — maybe 30 minutes total across several sessions. Day-of setup is under an hour for the indoor hunt, a bit longer for outdoor.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    Do I have to personalize the clues or can I use them as-is?
+                    <svg class="faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner">The indoor hunt clues are written to work for any couple as-is — they reference universal spaces like the bedroom, kitchen, and couch. The outdoor adventure hunt requires you to fill in your own locations, since those are specific to your relationship. Every clue has a "customization tip" explaining what to personalize for maximum emotional impact. Even one specific personal detail per clue makes a huge difference.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    What if my partner doesn't like surprises?
+                    <svg class="faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner">The planning guide has a section on this. The surprise element in a scavenger hunt is the clues and locations — not whether they know something romantic is happening. It's completely fine (and sometimes better) to tell your partner "I planned something special for tonight" and let them know they should be free. The discovery and journey are still fully intact. Knowing something is coming often makes people more excited, not less.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    Can I use this for an anniversary or other occasion, not just Valentine's Day?
+                    <svg class="faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner">Absolutely. The clues are written around your relationship and the locations that matter to you — not around Valentine's Day specifically. The Premium Bundle includes specific Anniversary and Birthday versions. But the core Digital Kit works perfectly for any occasion where you want to do something romantic and memorable.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    Is this a physical kit or a digital download?
+                    <svg class="faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner">This is a digital download — files are delivered instantly after purchase. You can read them on any device or print them. We recommend printing the clue cards on cardstock for the best experience (standard cardstock at any office supply store works perfectly). The Premium Bundle includes print-ready designed clue card templates.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    What if the outdoor hunt clue locations don't exist near me?
+                    <svg class="faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner">The outdoor hunt uses "archetypes" rather than specific locations — clue 3 is "a place from early in your relationship" not "that specific coffee shop in Brooklyn." You map your actual locations to each archetype before the hunt. The planning guide includes a location assignment worksheet to help you do this in about 15 minutes. Every couple's hunt ends up looking completely different and entirely personal.</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-section">
+    <div class="container">
+        <h2>Give Them a Valentine's Day They'll Never Forget</h2>
+        <p>Two complete hunts. 30 love notes. A planning guide that handles the stress so you can focus on the person.</p>
+        <div class="hero-actions">
+            <a href="#pricing" class="btn-white">Get the Full Kit — Starting at $9</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2026 <strong>Valentine's Scavenger Hunt Kit</strong>. All rights reserved.</p>
+    <p style="margin-top: 8px;">For personal use only. All materials delivered as digital downloads.</p>
+</footer>
+
+<script>
+    function toggleFaq(btn) {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+    }
+</script>
+</body>
+</html>
